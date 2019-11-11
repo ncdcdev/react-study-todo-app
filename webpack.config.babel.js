@@ -1,38 +1,29 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-//絶対パスにする
-const ASSET_PATH = process.env.ASSET_PATH || '/';
-const PROJECT = process.env.npm_lifecycle_event || null;
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devtool: 'source-map',
-  entry:
-    PROJECT == 'start:sales'
-      ? './sales/src/index.tsx'
-      : PROJECT == 'start:customer'
-      ? './customer/src/index.tsx'
-      : null,
+  entry: './src/index.js',
   output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: ASSET_PATH,
-    filename: 'index_bundle.js',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    path: path.join(__dirname, "/dist"),
+    filename: "index_bundle.js"
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        },
+          options: {
+            presets: [
+              ['@babel/react']
+            ]
+          }
+        }
       },
       {
         test: /\.s?css$/,
-        exclude: /node_modules(?!\/@storybook\/addon-info)/,
         use: [
           'style-loader',
           {
@@ -40,12 +31,13 @@ module.exports = {
             options: {
               url: false,
 
-              importLoaders: 2,
+              importLoaders: 2
             },
           },
           {
             loader: 'sass-loader',
-          },
+
+          }
         ],
       },
       {
@@ -57,19 +49,9 @@ module.exports = {
         include: /node_modules/,
         type: 'javascript/auto',
       },
-    ],
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template:
-        PROJECT == 'start:sales'
-          ? './sales/src/index.html'
-          : PROJECT == 'start:customer'
-          ? './customer/src/index.html'
-          : null,
-    }),
-  ],
-  devServer: {
-    historyApiFallback: true,
-  },
-};
+    new HtmlWebpackPlugin({ template: "./src/index.html" })
+  ]
+}

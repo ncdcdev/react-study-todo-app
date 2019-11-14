@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Menu, MenuItem } from '@material-ui/core';
 import Form from '../components/Form';
 
-const Top = () => {
+const Add = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -34,4 +34,4 @@ const Top = () => {
   );
 };
 
-export default Top;
+export default Add;

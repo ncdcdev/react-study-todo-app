@@ -16,6 +16,7 @@ const List = props => {
       {list.map((n, i) => (
         <li className="siimple-list-item siimple--bg-white" style={style}>
           {n.title}
+          {n.description}
           <Button variant="contained" color="secondary" onClick={console.log(333)}>
             削除
           </Button>

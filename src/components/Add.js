@@ -3,7 +3,21 @@ import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 
 const Add = props => {
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const { handleAdd } = props;
+
+  const reqHandleAdd = () => {
+    handleAdd({ title: title, description: description });
+    setTitle('');
+    setDescription('');
+  };
+
+  const isDisabledHandleAdd = () => {
+    handleAdd({ title: title, description: description });
+    setTitle('');
+    setDescription('');
+    return false;
+  };
   return (
     <div className="siimple-form-field">
       <TextField
@@ -20,8 +34,19 @@ const Add = props => {
           shrink: true,
         }}
       />
-      <TextareaAutosize aria-label="minimum height" rows={3} placeholder="Minimum 3 rows" />
-      <Button variant="contained" color="primary" onClick={e => handleAdd({ title: title })}>
+      <TextareaAutosize
+        aria-label="minimum height"
+        rows={3}
+        placeholder="Minimum 3 rows"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+      />
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => reqHandleAdd()}
+        disabled={title.length === 0 || description.length === 0}
+      >
         追加
       </Button>
     </div>

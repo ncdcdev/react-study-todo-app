@@ -6,6 +6,7 @@ import List from '../components/List';
 
 const Top = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [list, setList] = useState([]);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -13,16 +14,18 @@ const Top = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  console.log(list);
   return (
     <div>
       <h1>React Todo App</h1>
-      <Add handleAdd={e => console.log(e)} />
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Open Menu
-      </Button>
+      <Add handleAdd={e => setList([...list, e])} />
       <List />
 
       {/*FIXME*/}
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        Open Menu
+      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}

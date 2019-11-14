@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 
 const Add = props => {
+  const [title, setTitle] = useState('');
   const { handleAdd } = props;
   return (
     <div className="siimple-form-field">
@@ -13,12 +14,14 @@ const Add = props => {
         helperText="Full width!"
         fullWidth
         margin="normal"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
         InputLabelProps={{
           shrink: true,
         }}
       />
       <TextareaAutosize aria-label="minimum height" rows={3} placeholder="Minimum 3 rows" />
-      <Button variant="contained" color="primary" onClick={e => handleAdd(2)}>
+      <Button variant="contained" color="primary" onClick={e => handleAdd({ title: title })}>
         追加
       </Button>
     </div>

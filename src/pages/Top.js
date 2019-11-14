@@ -20,7 +20,7 @@ const Top = () => {
     <div>
       <h1>React Todo App</h1>
       <Add handleAdd={e => setList([...list, e])} />
-      <List />
+      <List list={list} />
 
       {/*FIXME*/}
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>

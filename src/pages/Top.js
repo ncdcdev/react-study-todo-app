@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Menu, MenuItem } from '@material-ui/core';
-import Form from '../components/Form';
+import Add from '../components/Add';
+import List from '../components/List';
 
-const Add = () => {
+const Top = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -15,10 +16,13 @@ const Add = () => {
   return (
     <div>
       <h1>React Todo App</h1>
-      <Form />
+      <Add handleAdd={e => console.log(e)} />
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         Open Menu
       </Button>
+      <List />
+
+      {/*FIXME*/}
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -34,4 +38,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default Top;

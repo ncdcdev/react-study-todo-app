@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
 
 let style = {
   maxWidth: '700px',
@@ -12,21 +13,21 @@ const List = props => (
   <ul className="siimple-list">
     <li className="siimple-list-item siimple--bg-white" style={style}>
       Item 1{' '}
-      <span className="siimple-tag siimple-tag--error siimple-hover" style={btn}>
-        Delete
-      </span>
+      <Button variant="contained" color="secondary" onClick={console.log(333)}>
+        削除
+      </Button>
     </li>
     <li className="siimple-list-item siimple--bg-white" style={style}>
       Item 2{' '}
-      <span className="siimple-tag siimple-tag--error siimple-hover" style={btn}>
-        Delete
-      </span>
+      <Button variant="contained" color="secondary" onClick={console.log(333)}>
+        削除
+      </Button>
     </li>
     <li className="siimple-list-item siimple--bg-white" style={style}>
       Item 3{' '}
-      <span className="siimple-tag siimple-tag--error siimple-hover" style={btn}>
-        Delete
-      </span>
+      <Button variant="contained" color="secondary" onClick={console.log(333)}>
+        削除
+      </Button>
     </li>
   </ul>
 );

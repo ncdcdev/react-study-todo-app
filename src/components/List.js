@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import styled from 'styled-components';
 
-let style = {
-  maxWidth: '700px',
-};
-
-let btn = {
-  cursor: 'pointer',
-};
+const Wrapper = styled.div``;
+const CardStyled = styled(Card)`
+  margin: 15px;
+`;
 
 const List = props => {
   const { list } = props;
   return (
-    <div className="siimple-list">
+    <Wrapper>
       {list.map((n, i) => (
-        <Card>
+        <CardStyled>
           <CardContent>
-            <Typography color="textSecondary">{i + 1}</Typography>
             <Typography variant="h5" component="h2">
-              {n.title}
+              {i + 1}.{n.title}
             </Typography>
-
             <Typography variant="body2" component="p">
               {n.description}
             </Typography>
@@ -30,9 +26,9 @@ const List = props => {
               削除
             </Button>
           </CardActions>
-        </Card>
+        </CardStyled>
       ))}
-    </div>
+    </Wrapper>
   );
 };
 

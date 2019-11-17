@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
 import { TextField, Button, TextareaAutosize } from '@material-ui/core';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  padding 20px;
+`;
+
+const TextareaAutosizeStyled = styled(TextareaAutosize)`
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  padding: 8px;
+  resize: vertical;
+  margin-bottom: 20px;
+`;
 
 const Add = props => {
   const [title, setTitle] = useState('');
@@ -18,14 +32,14 @@ const Add = props => {
     setDescription('');
     return false;
   };
+
   return (
-    <div className="siimple-form-field">
+    <Wrapper>
       <TextField
         id="standard-full-width"
         label="タイトル"
         style={{ margin: 8 }}
         placeholder="歯磨き"
-        helperText="Full width!"
         fullWidth
         margin="normal"
         value={title}
@@ -34,10 +48,9 @@ const Add = props => {
           shrink: true,
         }}
       />
-      <TextareaAutosize
-        aria-label="minimum height"
+      <TextareaAutosizeStyled
         rows={3}
-        placeholder="Minimum 3 rows"
+        placeholder="毎朝磨きます"
         value={description}
         onChange={e => setDescription(e.target.value)}
       />
@@ -49,7 +62,7 @@ const Add = props => {
       >
         追加
       </Button>
-    </div>
+    </Wrapper>
   );
 };
 

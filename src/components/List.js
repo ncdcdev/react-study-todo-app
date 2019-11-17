@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 
 let style = {
   maxWidth: '700px',
@@ -12,17 +12,27 @@ let btn = {
 const List = props => {
   const { list } = props;
   return (
-    <ul className="siimple-list">
+    <div className="siimple-list">
       {list.map((n, i) => (
-        <li className="siimple-list-item siimple--bg-white" style={style}>
-          {n.title}
-          {n.description}
-          <Button variant="contained" color="secondary" onClick={console.log(333)}>
-            削除
-          </Button>
-        </li>
+        <Card>
+          <CardContent>
+            <Typography color="textSecondary">{i + 1}</Typography>
+            <Typography variant="h5" component="h2">
+              {n.title}
+            </Typography>
+
+            <Typography variant="body2" component="p">
+              {n.description}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button variant="contained" color="secondary" onClick={console.log(333)}>
+              削除
+            </Button>
+          </CardActions>
+        </Card>
       ))}
-    </ul>
+    </div>
   );
 };
 

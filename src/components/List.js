@@ -8,11 +8,13 @@ const CardStyled = styled(Card)`
 `;
 
 const List = props => {
-  const { list } = props;
+  const { list, handleRemove } = props;
+
+  console.log('list', list);
   return (
     <Wrapper>
       {list.map((n, i) => (
-        <CardStyled>
+        <CardStyled key={i}>
           <CardContent>
             <Typography variant="h5" component="h2">
               {i + 1}.{n.title}
@@ -22,7 +24,7 @@ const List = props => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button variant="contained" color="secondary" onClick={console.log(333)}>
+            <Button variant="contained" color="secondary" onClick={() => handleRemove(i)}>
               削除
             </Button>
           </CardActions>

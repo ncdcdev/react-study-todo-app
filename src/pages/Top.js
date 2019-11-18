@@ -13,6 +13,16 @@ const Wrapper = styled.div`
 const Top = () => {
   const [list, setList] = useState([]);
 
+  const handleRemove = i => {
+    // todo配列からi番目から1つ目のデータを除外
+    console.log('i', i);
+    list.splice(i, 1);
+
+    console.log('list.splice', list);
+    // setStateでtodo配列を上書き
+    setList([...list]);
+  };
+
   console.log(list);
   return (
     <Wrapper>
@@ -20,7 +30,7 @@ const Top = () => {
         React Todo App
       </Typography>
       <Add handleAdd={e => setList([...list, e])} />
-      <List list={list} />
+      <List list={list} handleRemove={i => handleRemove(i)} />
     </Wrapper>
   );
 };

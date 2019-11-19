@@ -14,12 +14,7 @@ const Top = () => {
   const [list, setList] = useState([]);
 
   const handleRemove = i => {
-    // todo配列からi番目から1つ目のデータを除外
-    console.log('i', i);
     list.splice(i, 1);
-
-    console.log('list.splice', list);
-    // setStateでtodo配列を上書き
     setList([...list]);
   };
 

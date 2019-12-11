@@ -26,13 +26,6 @@ const Add = props => {
     setDescription('');
   };
 
-  const isDisabledHandleAdd = () => {
-    handleAdd({ title: title, description: description });
-    setTitle('');
-    setDescription('');
-    return false;
-  };
-
   return (
     <Wrapper>
       <TextField

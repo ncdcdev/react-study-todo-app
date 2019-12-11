@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button, Typography } from '@material-ui/core';
-import Add from '../components/Add';
 import List from '../components/List';
 
 const Wrapper = styled.div`
